@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_home"
+            android:title="@string/home"
+            android:icon="@drawable/ic_home"/>
+
+        <item
+            android:id="@+id/nav_pubblica"
+            android:title="@string/crea_evento"
+            android:icon="@drawable/ic_crea_evento"/>
+
+        <item
+            android:id="@+id/nav_mappa"
+            android:title="Locali Intorno a Te"
+            android:icon="@drawable/ic_mappa"/>
+
+        <item
+            android:id="@+id/nav_proposte_inviate"
+            android:title="Proposte Inviate"
+            android:icon="@drawable/ic_ingaggi"/>
+
+        <item
+            android:id="@+id/nav_eventi"
+            android:title="Eventi"
+            android:icon="@drawable/ic_prenotazioni"/>
+
+        <item
+            android:id="@+id/nav_locali_preferiti"
+            android:title="Locali Preferiti"
+            android:icon="@drawable/ic_speciale"/>
+
+        <item
+            android:id="@+id/nav_cantanti_preferiti"
+            android:title="Cantanti Preferiti"
+            android:icon="@drawable/ic_speciale"/>
+
+        <item
+            android:id="@+id/nav_impostazioni"
+            android:title="Impostazioni"
+            android:icon="@drawable/ic_impostazioni"/>
+
+    </group>
+
+</menu>

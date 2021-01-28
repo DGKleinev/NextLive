@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "309460849003",
+    "firebase_url": "https://next-live-db-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "next-live-db",
+    "storage_bucket": "next-live-db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:309460849003:android:dfe2716c202a0774e93c2e",
+        "android_client_info": {
+          "package_name": "com.example.nextlive"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "309460849003-19p33kngngq42dndvncmghq7hbnvph01.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaIQux1t9xPN8Zn8Y7Q60YSKKZO1hZcs0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "309460849003-19p33kngngq42dndvncmghq7hbnvph01.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

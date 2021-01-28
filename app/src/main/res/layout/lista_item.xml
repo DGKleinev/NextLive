@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@drawable/sfondo_items">
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    
+        <ImageView
+            android:id="@+id/img_anteprima"
+            android:layout_width="117dp"
+            android:layout_height="124dp"
+            android:src="@mipmap/profile"/>
+        <TextView
+            android:id="@+id/titolo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/img_anteprima"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@+id/img_anteprima"
+            android:layout_toEndOf="@id/img_anteprima"
+            android:text="Cantante/Locale/Nome_Evento"
+            android:textSize="20sp"
+            android:fontFamily="@font/baloo"
+            android:layout_marginTop="13dp"/>
+        <TextView
+            android:id="@+id/citta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/img_anteprima"
+            android:layout_alignTop="@+id/titolo"
+            android:layout_marginTop="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_toEndOf="@id/img_anteprima"
+            android:layout_alignParentEnd="true"
+            android:textSize="16sp"
+            android:fontFamily="@font/baloo"
+            android:text="Città" />
+
+        <TextView
+            android:id="@+id/informazione1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/img_anteprima"
+            android:layout_toEndOf="@id/img_anteprima"
+            android:textSize="16sp"
+            android:layout_alignTop="@id/citta"
+            android:layout_marginTop="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:fontFamily="@font/baloo"
+            android:text="Genere_Musicale/ Ora_Evento"/>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
