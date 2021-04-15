@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="genere_array">
+        <item>Blues</item>
+        <item>Country</item>
+        <item>Disco</item>
+        <item>Electro</item>
+        <item>Folk</item>
+        <item>Funk</item>
+        <item>Hip-Hop</item>
+        <item>House</item>
+        <item>Jazz</item>
+        <item>Pop</item>
+        <item>Rythm and Blues</item>
+        <item>Rap</item>
+        <item>Reggae</item>
+        <item>Rock</item>
+    </string-array>
+</resources>

@@ -7,30 +7,37 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.nextlive.R;
-import com.example.nextlive.model.ListaItemModel;
+import com.example.nextlive.model.EventoModel;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class ListViewAdapter extends BaseAdapter {
 
     private Context context;
-    private ArrayList<ListaItemModel> lista;
+    private ArrayList<EventoModel> eventList;
+   //private String dataEvento;
+    //private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
 
-    public ListViewAdapter(Context context, ArrayList<ListaItemModel> lista){
+    public ListViewAdapter(){}
+
+    public ListViewAdapter(Context context, ArrayList<EventoModel> eventList){
         this.context = context;
-        this.lista = lista;
+        this.eventList = eventList;
     }
 
     @Override
     public int getCount() {
-        return lista.size();
+        return eventList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return lista.get(position);
+        return eventList.get(position);
     }
 
     @Override
@@ -43,18 +50,25 @@ public class ListViewAdapter extends BaseAdapter {
         if(convertView == null) {
             convertView = View.inflate(context, R.layout.lista_item, null);
         }
-
         ImageView img_anteprima = convertView.findViewById(R.id.img_anteprima);
         TextView titolo = convertView.findViewById(R.id.titolo);
+        TextView autore = convertView.findViewById(R.id.autore);
         TextView citta = convertView.findViewById(R.id.citta);
-        TextView informazione = convertView.findViewById(R.id.informazione1);
+        TextView data = convertView.findViewById(R.id.data);
+        TextView genere = convertView.findViewById(R.id.genere);
 
-        ListaItemModel listModel = lista.get(position);
-        img_anteprima.setImageResource(listModel.getImageId());
-        titolo.setText(listModel.getTitolo());
-        citta.setText(listModel.getCitta());
-        informazione.setText(listModel.getPrima_informazione());
-
+        EventoModel singleEvent = eventList.get(position);
+        titolo.setText(singleEvent.getTitoloEvento());
+        autore.setText(singleEvent.getIdAutore());
+        citta.setText(singleEvent.getIndirizzoEvento());
+        data.setText(singleEvent.getDataEvento());
+        //dataEvento = sdf.format(singleEvent.getDataEvento());
+        //data.setText(dataEvento);
+        genere.setText(singleEvent.getGenereMusicale());
+        //caricamento Immagine con Glide
+        Glide.with(this.context)
+                .load(singleEvent.geturlImmagineEvento())
+                .into(img_anteprima);
         return convertView;
     }
 }

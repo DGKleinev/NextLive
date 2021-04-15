@@ -1,49 +1,84 @@
 package com.example.nextlive.model;
 
+import android.net.Uri;
+
+import java.util.Date;
+
 public class ListaItemModel {
+    private EventoModel evento;
+    private String autore;
 
-    private int imageId;
+/*
+    private Uri uriImmagine;
     private String titolo;
+    private String user;
+    private Date dataEvento;
+    private String genere;
     private String citta;
-    private String prima_informazione;
 
-    public ListaItemModel(int imageId, String titolo, String citta, String prima_informazione){
-        this.imageId = imageId;
+    public ListaItemModel(Uri uriImmagine, String titolo, String user, Date dataEvento, String genere, String citta) {
+        this.uriImmagine = uriImmagine;
         this.titolo = titolo;
+        this.user = user;
+        this.dataEvento = dataEvento;
+        this.genere = genere;
         this.citta = citta;
-        this.prima_informazione = prima_informazione;
+    }
+/*
+    private String idAutore;
+    private String titoloEvento;
+    private String descrizioneEvento;
+    private String indirizzoEvento;
+    private Date dataEvento;
+    private String nomeCantante;
+    private String genereMusicale;
+    private String urlImmagineEvento;
+ //
+    public Uri getUriImmagine() {
+        return uriImmagine;
     }
 
-    public int getImageId(){
-        return imageId;
+    public void setUriImmagine(Uri uriImmagine) {
+        this.uriImmagine = uriImmagine;
     }
 
-    public String getTitolo(){
+    public String getTitolo() {
         return titolo;
     }
 
-    public String getCitta(){
-        return citta;
-    }
-
-    public String getPrima_informazione(){
-        return prima_informazione;
-    }
-
-    public void setImageId(int imageId){
-        this.imageId = imageId;
-    }
-
-    public void setTitolo(String titolo){
+    public void setTitolo(String titolo) {
         this.titolo = titolo;
     }
 
-    public void setCitta(String citta){
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public Date getDataEvento() {
+        return dataEvento;
+    }
+
+    public void setDataEvento(Date dataEvento) {
+        this.dataEvento = dataEvento;
+    }
+
+    public String getGenere() {
+        return genere;
+    }
+
+    public void setGenere(String genere) {
+        this.genere = genere;
+    }
+
+    public String getCitta() {
+        return citta;
+    }
+
+    public void setCitta(String citta) {
         this.citta = citta;
-    }
-
-    public void setPrima_informazione(String prima_informazione){
-        this.prima_informazione = prima_informazione;
-    }
-
+    }*/
 }

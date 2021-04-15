@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class GenereMusicaleAdapter extends ArrayAdapter<GenereMusicaleModel> {
     private Context context;
     private ArrayList<GenereMusicaleModel> listaGeneri;
-    private com.example.nextlive.adapter.GenereMusicaleAdapter genereMusicaleAdapter;
+    private GenereMusicaleAdapter genereMusicaleAdapter;
     private boolean isFromView = false;
 
     public GenereMusicaleAdapter(Context context, int resource, ArrayList<GenereMusicaleModel> generi) {

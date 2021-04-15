@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/linear_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/modificap_txtannulla"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Annulla"
+            android:textSize="15dp"
+            android:textStyle="normal"
+            android:textColor="@color/bottone_azzurro"
+            android:layout_alignParentLeft="true"/>
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Modifica Profilo"
+            android:textSize="16dp"
+            android:fontFamily="@font/baloo"
+            android:textColor="@color/white"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/modificap_txtsalva"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Salva"
+            android:textSize="15dp"
+            android:textStyle="normal"
+            android:textColor="@color/bottone_azzurro"
+            android:layout_alignParentRight="true"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/suddivisione_grigio"
+        android:layout_below="@+id/linear_ll"
+        android:paddingRight="8dp"
+        android:paddingLeft="8dp"/>
+</RelativeLayout>

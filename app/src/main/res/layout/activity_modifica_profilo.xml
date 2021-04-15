@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/sfondo_grigio"
+    tools:context = ".ProfileActivity">
+
+    <include layout="@layout/toolbar_modifica_profilo" android:id="@+id/modificap_layout"/>
+    <LinearLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/modifica_user_coverimage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/profile"
+            android:background="@drawable/button_style" />
+    </LinearLayout>
+    <!--height = prima era 220dp
+     translationY = prima -110
+
+        android:background="@drawable/border_line"-->
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:orientation="horizontal"
+        android:translationY="-55dp"
+        android:translationZ="90dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout1"
+        app:layout_constraintVertical_bias="0.0">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/modifica_user_image"
+            android:layout_marginLeft="20dp"
+            android:focusable="true"
+            android:textColorHint="@color/bottone_azzurro"
+            android:translationY="20dp"
+            android:focusableInTouchMode="true">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/modifica_nome_utente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/suddivisione_grigio"
+                android:fontFamily="@font/baloo"
+                android:hint="Nome utente"
+                android:ems="10"
+                android:inputType="text"
+                android:textSize="15sp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/modifica_user_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:src="@mipmap/profile"/>
+    </RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Puoi modificare o aggiungere le seguenti Informazioni"
+        android:fontFamily="@font/baloo"
+        android:textSize="14dp"
+        android:gravity="center"
+        android:textColor="@color/white"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sono un"
+            android:textSize="15sp"
+            android:fontFamily="@font/baloo"
+            android:textColor="@color/white"/>
+        <Spinner
+            android:id="@+id/modifica_tipoUtente"
+            android:background="@color/sfondo_grigio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:textColorHint="@color/bottone_azzurro"
+        android:focusableInTouchMode="true">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/modifica_descrizione"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/suddivisione_grigio"
+            android:fontFamily="@font/baloo"
+            android:hint="Qualcosa su di me.."
+            android:ems="10"
+            android:inputType="text"
+            android:textSize="15sp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:textColorHint="@color/bottone_azzurro"
+        android:focusableInTouchMode="true">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/modifica_numero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/suddivisione_grigio"
+            android:fontFamily="@font/baloo"
+            android:hint="numero di Telefono"
+            android:ems="10"
+            android:inputType="number"
+            android:textSize="15sp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Genere Musicale"
+            android:textSize="15sp"
+            android:fontFamily="@font/baloo"
+            android:textColor="@color/white"/>
+        <Spinner
+            android:id="@+id/modifica_generiMusicali"
+            android:background="@color/sfondo_grigio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:textColorHint="@color/bottone_azzurro"
+        android:focusableInTouchMode="true">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/modifica_website"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/suddivisione_grigio"
+            android:fontFamily="@font/baloo"
+            android:hint="URL della tua Pagine web"
+            android:ems="10"
+            android:inputType="text"
+            android:textSize="15sp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+</LinearLayout>

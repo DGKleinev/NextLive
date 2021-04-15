@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.nextlive.adapter.ListViewAdapter;
+import com.example.nextlive.model.EventoModel;
 import com.example.nextlive.model.ListaItemModel;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class EventiActivity extends AppCompatActivity {
     Toolbar return_toolbar;
 
     private ListView listView;
-    private ArrayList<ListaItemModel> listaItemModels = new ArrayList<>();
+    private ArrayList<EventoModel> eventList = new ArrayList<>();
     private ListViewAdapter listViewAdapter;
 
 
@@ -34,21 +35,21 @@ public class EventiActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         listView = findViewById(R.id.lista_eventi);
-        ListaItemModel prova1 = new ListaItemModel(R.mipmap.profile, "cantante 1", "milano", "reggae");
-        ListaItemModel prova2 = new ListaItemModel(R.mipmap.profile, "cantante 2", "venezia", "folk");
+       // ListaItemModel prova1 = new ListaItemModel(R.mipmap.profile, "cantante 1", "milano", "reggae");
+        //ListaItemModel prova2 = new ListaItemModel(R.mipmap.profile, "cantante 2", "venezia", "folk");
 
-        listaItemModels.add(prova1);
-        listaItemModels.add(prova2);
+        //listaItemModels.add(prova1);
+        //listaItemModels.add(prova2);
 
-        listViewAdapter = new ListViewAdapter(EventiActivity.this, listaItemModels);
+        listViewAdapter = new ListViewAdapter(EventiActivity.this, eventList);
         listView.setAdapter(listViewAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ListaItemModel itemModel = listaItemModels.get(position);
+                EventoModel post = eventList.get(position);
 
-                Toast.makeText(EventiActivity.this, "hai clickato: " + itemModel.getTitolo(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(EventiActivity.this, "hai clickato: " + post.getTitoloEvento(), Toast.LENGTH_SHORT).show();
             }
         });
     }

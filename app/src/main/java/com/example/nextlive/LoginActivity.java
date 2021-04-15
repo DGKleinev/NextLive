@@ -89,8 +89,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 //Toast.makeText(this,"prova",Toast.LENGTH_LONG).show();
                                 FirebaseUser currentUser = firebaseAuth.getCurrentUser();
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                intent.putExtra(MainActivity.userEmail, email);
-                                intent.putExtra(MainActivity.userID, currentUser.getUid());
+                                intent.putExtra(MainActivity.USER_EMAIL, email);
+                                intent.putExtra(MainActivity.USER_ID, currentUser.getUid());
                                 startActivity(intent);
                             } else {
                                     Toast.makeText(getApplicationContext(), "Email non presente nel db", Toast.LENGTH_LONG).show();
