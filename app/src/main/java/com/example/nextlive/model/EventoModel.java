@@ -11,26 +11,26 @@ public class EventoModel {
     private String dataEvento;
     private String nomeCantante;
     private String genereMusicale;
-    private String urlImmagineEvento;
+    private String pImage;
 
     //https://stackoverflow.com/questions/47706601/users-does-not-define-no-argument-constructor
     public EventoModel() {}
 
     public EventoModel(String idAutore, String titoloEvento, String descrizioneEvento,
                        String indirizzoEvento, String dataEvento, String genereMusicale,
-                       String urlImmagineEvento) {
+                       String pImage) {
         this.idAutore = idAutore;
         this.titoloEvento = titoloEvento;
         this.descrizioneEvento = descrizioneEvento;
         this.indirizzoEvento = indirizzoEvento;
         this.dataEvento = dataEvento;
         this.genereMusicale = genereMusicale;
-        this.urlImmagineEvento = urlImmagineEvento;
+        this.pImage = pImage;
     }
 
     public EventoModel(String idAutore, String titoloEvento, String descrizioneEvento,
                        String indirizzoEvento, String dataEvento, String nomeCantante,
-                       String genereMusicale, String urlImmagineEvento) {
+                       String genereMusicale, String pImage) {
         this.idAutore = idAutore;
         this.titoloEvento = titoloEvento;
         this.descrizioneEvento = descrizioneEvento;
@@ -38,7 +38,7 @@ public class EventoModel {
         this.dataEvento = dataEvento;
         this.nomeCantante = nomeCantante;
         this.genereMusicale = genereMusicale;
-        this.urlImmagineEvento = urlImmagineEvento;
+        this.pImage = pImage;
     }
 
     public String getIdAutore() {
@@ -97,12 +97,12 @@ public class EventoModel {
         this.genereMusicale = genereMusicale;
     }
 
-    public String geturlImmagineEvento() {
-        return urlImmagineEvento;
+    public String getPImage() {
+        return pImage;
     }
 
-    public void seturlImmagineEvento(String urlImmagineEvento) {
-        this.urlImmagineEvento = urlImmagineEvento;
+    public void setPImage(String pImage) {
+        this.pImage = pImage;
     }
 
 }

@@ -1,86 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:background="@drawable/sfondo_items">
 
-    <RelativeLayout
-
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    
+        android:layout_height="match_parent">
+
         <ImageView
             android:id="@+id/img_anteprima"
             android:layout_width="137dp"
             android:layout_height="144dp"
-            android:src="@mipmap/profile"/>
+            android:src="@mipmap/profile"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
         <TextView
             android:id="@+id/titolo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/img_anteprima"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_toRightOf="@+id/img_anteprima"
-            android:layout_toEndOf="@id/img_anteprima"
+            android:layout_width="272dp"
+            android:layout_height="46dp"
+            android:fontFamily="@font/baloo"
+            android:gravity="center"
             android:text="Cantante/Nome_Evento"
             android:textSize="20sp"
-            android:fontFamily="@font/baloo"
-            android:layout_marginTop="13dp"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/img_anteprima"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/autore"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/titolo"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_toRightOf="@+id/img_anteprima"
-            android:layout_toEndOf="@id/img_anteprima"
+            android:layout_width="272dp"
+            android:layout_height="31dp"
+            android:fontFamily="@font/baloo"
             android:text="nome Locale"
             android:textSize="18sp"
-            android:fontFamily="@font/baloo"
-            android:layout_marginTop="27dp"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/img_anteprima"
+            app:layout_constraintTop_toBottomOf="@+id/titolo" />
+
         <TextView
             android:id="@+id/citta"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/img_anteprima"
-            android:layout_alignTop="@+id/autore"
-            android:layout_marginTop="24dp"
-            android:layout_toEndOf="@id/img_anteprima"
-            android:layout_toLeftOf="@+id/data"
-            android:layout_marginRight="30dp"
-            android:textSize="16sp"
+            android:layout_width="95dp"
+            android:layout_height="31dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/baloo"
-            android:text="dd/mm/yyyy" />
+            android:text="dd/mm/yyyy"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/img_anteprima"
+            app:layout_constraintTop_toBottomOf="@+id/autore" />
 
         <TextView
             android:id="@+id/data"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="24dp"
-            android:layout_alignTop="@+id/autore"
-            android:layout_toRightOf="@+id/citta"
-            android:layout_toEndOf="@+id/citta"
-            android:layout_marginLeft="40dp"
-            android:textSize="16sp"
+            android:layout_width="83dp"
+            android:layout_height="31dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/baloo"
             android:text="testoCittà"
-            android:layout_marginStart="40dp" />
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/genere"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.989"
+            app:layout_constraintStart_toEndOf="@+id/citta"
+            app:layout_constraintTop_toBottomOf="@+id/autore" />
 
         <TextView
             android:id="@+id/genere"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/img_anteprima"
-            android:layout_toEndOf="@id/img_anteprima"
-            android:textSize="16sp"
-            android:layout_alignTop="@id/citta"
-            android:layout_marginTop="30dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
+            android:layout_width="272dp"
+            android:layout_height="27dp"
             android:fontFamily="@font/baloo"
-            android:text="Genere_Musicale/ Ora_Evento"/>
-    </RelativeLayout>
+            android:text="Genere_Musicale/ Ora_Evento"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/img_anteprima"
+            app:layout_constraintTop_toBottomOf="@+id/citta" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

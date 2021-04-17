@@ -6,22 +6,16 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.bumptech.glide.Glide;
 import com.example.nextlive.R;
 import com.example.nextlive.model.EventoModel;
-
-import java.text.SimpleDateFormat;
+import com.example.nextlive.model.GlideApp;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import java.util.ArrayList;
-import java.util.HashMap;
-
 
 public class ListViewAdapter extends BaseAdapter {
-
     private Context context;
     private ArrayList<EventoModel> eventList;
-   //private String dataEvento;
-    //private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
 
     public ListViewAdapter(){}
 
@@ -57,17 +51,19 @@ public class ListViewAdapter extends BaseAdapter {
         TextView data = convertView.findViewById(R.id.data);
         TextView genere = convertView.findViewById(R.id.genere);
 
+        //Visualizzazione dati presi dal DB
         EventoModel singleEvent = eventList.get(position);
         titolo.setText(singleEvent.getTitoloEvento());
         autore.setText(singleEvent.getIdAutore());
         citta.setText(singleEvent.getIndirizzoEvento());
         data.setText(singleEvent.getDataEvento());
-        //dataEvento = sdf.format(singleEvent.getDataEvento());
-        //data.setText(dataEvento);
         genere.setText(singleEvent.getGenereMusicale());
-        //caricamento Immagine con Glide
-        Glide.with(this.context)
-                .load(singleEvent.geturlImmagineEvento())
+        StorageReference eventImageRef = FirebaseStorage.getInstance().getReference("eventpics/"+ singleEvent.getPImage());
+
+        // Download directly from StorageReference using Glide
+        // (See MyAppGlideModule for Loader registration)
+        GlideApp.with(this.context /* context */)
+                .load(eventImageRef)
                 .into(img_anteprima);
         return convertView;
     }

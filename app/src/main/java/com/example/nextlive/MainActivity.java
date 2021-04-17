@@ -106,9 +106,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         eventiDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Toast.makeText(MainActivity.this, "sono entrato qui: ", Toast.LENGTH_SHORT).show();
                 Map<String,HashMap<String, String>> mappaParent = (HashMap<String, HashMap<String, String>>) snapshot.getValue();
                 ArrayList<String> valoriEvento = new ArrayList<>();
+
+                //provare a fare mappaParent.forEach((k,v))
                 for(Map.Entry<String, HashMap<String, String>> entry : mappaParent.entrySet()) {
                     HashMap <String, String> value = entry.getValue();
                     EventoModel em = new EventoModel(
@@ -120,6 +121,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             "genere",
                             "url"
                     );
+                  //  mappaParent.forEach((k,v)->k,v);
                     for(Map.Entry <String, String> getEvento : value.entrySet()){
                         valoriEvento.add(getEvento.getValue());
                         switch (getEvento.getKey()){
@@ -141,8 +143,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             case "genereMusicale":
                                 em.setGenereMusicale(getEvento.getValue());
                                 break;
-                            case "urlImmagineEvento":
-                                em.seturlImmagineEvento(getEvento.getValue());
+                            case "pimage":
+                                em.setPImage(getEvento.getValue());
                                 break;
                         }
                     }

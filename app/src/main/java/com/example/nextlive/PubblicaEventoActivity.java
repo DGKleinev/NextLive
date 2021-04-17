@@ -33,6 +33,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.NavUtils;
 
+import com.bumptech.glide.util.Util;
 import com.example.nextlive.model.EventoModel;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -80,7 +81,7 @@ public class PubblicaEventoActivity extends AppCompatActivity implements View.On
     //Immagine
     private ImageView immagineEvento;
     private Uri uriEventImage;
-    private String uriImage;
+    private String nomeImmagine;
     //Data
     private DatePickerDialog dataEvento;
     private DatabaseReference database;
@@ -136,28 +137,6 @@ public class PubblicaEventoActivity extends AppCompatActivity implements View.On
         ingaggio.setOnClickListener(this);
 
     }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.pubblica_buttonPubblica:
-                verificaInput();
-                break;
-
-            case R.id.pubblica_eventImage:
-                showImageChooser();
-                break;
-
-            case R.id.pubblica_singerVisibleChecked:
-                ingaggioUtentePresente();
-                break;
-
-            case R.id.pubblica_eventDate:
-                selezionaDataEvento();
-                break;
-        }
-    }
-
     //Metodi che servono a caricare l'immagine e ad avere un'antemprima nell'applicazione
     //Questo metodo seleziona una immagine
     private void showImageChooser(){
@@ -194,25 +173,20 @@ public class PubblicaEventoActivity extends AppCompatActivity implements View.On
         return super.onOptionsItemSelected(item);
     }
 
-
     //Metodo che serve a caricare l'immagine selezionata nel DB
-    private void uploadPicture(){
+    private void uploadPicture() {
         final ProgressDialog pd = new ProgressDialog(this);
         pd.setTitle("Caricando Immagine...");
         pd.show();
         final String randomKey = UUID.randomUUID().toString();
+        nomeImmagine = randomKey;
         StorageReference eventImageRef = FirebaseStorage.getInstance().getReference("eventpics/"+ randomKey);
+
         eventImageRef.putFile(uriEventImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 pd.dismiss();
-                //prendo come stringa il mio path di download, per poter caricare la mia immagine al momento del
-                //caricamento della interfaccia home
-                Task<Uri> getPathDownloadUri = taskSnapshot.getStorage().getDownloadUrl();
                 Snackbar.make(findViewById(android.R.id.content), "Immagine caricata.", Snackbar.LENGTH_LONG).show();
-                if(getPathDownloadUri.isSuccessful()){
-                   uriImage = getPathDownloadUri.getResult().toString();
-                }
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -241,41 +215,28 @@ public class PubblicaEventoActivity extends AppCompatActivity implements View.On
         dataEvento.show();
     }
 
-    //Se il locale vuole si è già accordato con un cantante precedentemente può spuntare la checkbox
-    //per poter inserire l'email del cantante
-    private void ingaggioUtentePresente(){
-        if (ingaggio.isChecked()) {
-            pubblicaCantante.setVisibility(View.VISIBLE);
-            cantanteText.setVisibility(View.VISIBLE);
-        }else{
-            cantanteText.setVisibility(View.INVISIBLE);
-            pubblicaCantante.setVisibility(View.INVISIBLE);
-        }
-    }
-
 
     //VerificaInput: Esegue una verifica dei campi che devono essere obbligatoriamente compilati prima della pubblicazione di un evento
     //il come viene verificata è ancora da definire, se qualcuno di voi lo fa è pregato di descrivere il procedimento
     //Campo ImageView: non verrà considerato un campo obbligatorio, se il locale non carica un'immagine, verrà caricata quella di default
     private void verificaInput(){
-        String evento, informazione, indirizzo, data;
+        String evento, informazione, indirizzo;
         evento = pubblicaNomeEvento.getText().toString();
         informazione = pubblicaInformazione.getText().toString();
         indirizzo = pubblicaIndirizzo.getText().toString();
-
         Calendar cal = Calendar.getInstance();
         Date currentDate = cal.getTime();
+
         try {
             int day = dataEvento.getDatePicker().getDayOfMonth();
             int month = dataEvento.getDatePicker().getMonth();
             int year = dataEvento.getDatePicker().getYear();
             cal.set(year, month, day);
         }catch (Exception e){
-            Toast.makeText(this, "devi inserire una data, deve essere maggiore di quella corrente", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "devi inserire una data e deve essere maggiore di quella corrente", Toast.LENGTH_LONG).show();
             return;
         }
         Date eventoData = cal.getTime();
-        data = eventoData.toString();
 
         //Verifica se i campi sono vuoti (tranne ImmagineEvento e Genere e Data)
         if(TextUtils.isEmpty(evento) && TextUtils.isEmpty(informazione) && TextUtils.isEmpty(indirizzo)){
@@ -295,13 +256,68 @@ public class PubblicaEventoActivity extends AppCompatActivity implements View.On
             Toast.makeText(this, "l'indirizzo inserito non esiste", Toast.LENGTH_LONG).show();
             return;
         }
-
-        saveUserInformation(evento, informazione, indirizzo);
+        uploadPicture();
+        EventoModel em = new EventoModel(
+                getIntent().getStringExtra("utente_id"),
+                evento,
+                informazione,
+                indirizzo,
+                stampoData,
+                genereText,
+                nomeImmagine
+        );
+        //Inizializzazione DB
+        database = FirebaseDatabase.getInstance().getReference().child("eventi");
+        //Inserimento Evento nel DB
+        database.push().setValue(em);
         Intent intent = new Intent(PubblicaEventoActivity.this, MainActivity.class);
         intent.putExtra(MainActivity.USER_EMAIL, getIntent().getStringExtra("utente_email"));
         intent.putExtra(MainActivity.USER_ID, getIntent().getStringExtra("utente_id"));
         Toast.makeText(this, " Pubblicazione Effettuata", Toast.LENGTH_LONG).show();
-       // startActivity(intent);
+        startActivity(intent);
+    }
+
+    //Metodo Implementati da OnItemSelectedListener
+    //Questo metodo servirà a spostarsi nell'evento selezionato
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        genereText = parent.getItemAtPosition(position).toString();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) { }//Metodo Implementati da OnItemSelectedListener
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.pubblica_buttonPubblica:
+                verificaInput();
+                break;
+
+            case R.id.pubblica_eventImage:
+                showImageChooser();
+                break;
+
+            case R.id.pubblica_singerVisibleChecked:
+                ingaggioUtentePresente();
+                break;
+
+            case R.id.pubblica_eventDate:
+                selezionaDataEvento();
+                break;
+        }
+    }
+
+    //Se il locale vuole si è già accordato con un cantante precedentemente può spuntare la checkbox
+    //per poter inserire l'email del cantante
+    private void ingaggioUtentePresente(){
+        if (ingaggio.isChecked()) {
+            pubblicaCantante.setVisibility(View.VISIBLE);
+            cantanteText.setVisibility(View.VISIBLE);
+        }else{
+            cantanteText.setVisibility(View.INVISIBLE);
+            pubblicaCantante.setVisibility(View.INVISIBLE);
+        }
     }
 
     //metodo che verifica se esiste (come indirizzo) la stringa inserita nel campo 'indirizzo'
@@ -309,7 +325,6 @@ public class PubblicaEventoActivity extends AppCompatActivity implements View.On
         String cercaInd = pubblicaIndirizzo.getText().toString();
         Geocoder geo = new Geocoder(PubblicaEventoActivity.this);
         List<Address> indirizzi = new ArrayList<>();
-        System.out.println(indirizzi);
         try{
             indirizzi = geo.getFromLocationName(cercaInd, 1);
         }catch (IOException e){
@@ -322,30 +337,5 @@ public class PubblicaEventoActivity extends AppCompatActivity implements View.On
             return true;
         }
         return false;
-    }
-
-    //Metodo Implementati da OnItemSelectedListener
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        genereText = parent.getItemAtPosition(position).toString();
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) { }//Metodo Implementati da OnItemSelectedListener
-
-    //Metodo che salva nel database l'oggetto EventoModel
-    private void saveUserInformation(String titoloEvento, String descrizione, String indirizzo){
-        uploadPicture();
-
-       EventoModel evento = new EventoModel(getIntent().getStringExtra("utente_id"), titoloEvento, descrizione, indirizzo, stampoData, genereText, uriImage);
-        database = FirebaseDatabase.getInstance().getReference().child("eventi");
-        database.push().setValue(evento);
-
-        Toast.makeText(PubblicaEventoActivity.this, "Dati inseriti", Toast.LENGTH_LONG).show();
-/*
-Uri uri;
-String stringUri;
-uri = Uri.parse(stringUri);
-*/
     }
 }
