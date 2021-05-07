@@ -33,11 +33,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.NavUtils;
 
-import com.bumptech.glide.util.Util;
 import com.example.nextlive.model.EventoModel;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -57,6 +55,7 @@ import java.util.UUID;
 public class PubblicaEventoActivity extends AppCompatActivity implements View.OnClickListener, OnItemSelectedListener {
     public static final String USER_EMAIL = "utente_email";
     public static final String USER_ID = "utente_id";
+    public static final String USER_TYPE = "utente_tipo";
     private static final int choose_image = 101;
     private static final String TAG = "";
     //questo codice serve per l'autocompletamento, per maggiori informazioni clickate sul seguente link:
@@ -269,10 +268,13 @@ public class PubblicaEventoActivity extends AppCompatActivity implements View.On
         //Inizializzazione DB
         database = FirebaseDatabase.getInstance().getReference().child("eventi");
         //Inserimento Evento nel DB
-        database.push().setValue(em);
-        Intent intent = new Intent(PubblicaEventoActivity.this, MainActivity.class);
-        intent.putExtra(MainActivity.USER_EMAIL, getIntent().getStringExtra("utente_email"));
-        intent.putExtra(MainActivity.USER_ID, getIntent().getStringExtra("utente_id"));
+        String idEvent = database.push().getKey();
+        database.child(idEvent).setValue(em);
+
+        Intent intent = new Intent(PubblicaEventoActivity.this, HomeActivity.class);
+        intent.putExtra(HomeActivity.USER_EMAIL, getIntent().getStringExtra("utente_email"));
+        intent.putExtra(HomeActivity.USER_ID, getIntent().getStringExtra("utente_id"));
+        intent.putExtra(HomeActivity.USER_TYPE, getIntent().getStringExtra("utente_tipo"));
         Toast.makeText(this, " Pubblicazione Effettuata", Toast.LENGTH_LONG).show();
         startActivity(intent);
     }

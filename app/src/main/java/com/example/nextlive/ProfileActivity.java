@@ -9,23 +9,19 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.NavUtils;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.example.nextlive.adapter.GenereMusicaleAdapter;
-import com.example.nextlive.adapter.SlidePagerAdapter;
-import com.example.nextlive.model.GenereMusicaleModel;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.ArrayList;
-
 
 public class ProfileActivity extends AppCompatActivity{
+    public static final String USER_EMAIL = "utente_email";
     public static final String USER_ID = "utente_id";
+    public static final String USER_TYPE = "utente_tipo";
     View layout_toolbar;
     ImageView return_toolbar;
     TextView modifica_profilo;
@@ -57,8 +53,8 @@ public class ProfileActivity extends AppCompatActivity{
         return_toolbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
-                intent.putExtra(MainActivity.USER_ID, getIntent().getStringExtra("utente_id"));
+                Intent intent = new Intent(ProfileActivity.this, HomeActivity.class);
+                intent.putExtra(HomeActivity.USER_ID, getIntent().getStringExtra("utente_id"));
                 startActivity(intent);
             }
         });

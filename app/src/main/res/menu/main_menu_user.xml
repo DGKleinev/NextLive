@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
     <group android:checkableBehavior="single">
 
         <item
@@ -13,18 +14,13 @@
             android:icon="@drawable/ic_mappa"/>
 
         <item
-            android:id="@+id/nav_proposte_inviate"
-            android:title="Proposte Inviate"
-            android:icon="@drawable/ic_ingaggi"/>
-
-        <item
-            android:id="@+id/nav_esibizione"
-            android:title="Esibizioni"
+            android:id="@+id/nav_memo"
+            android:title="Parteciper\ò"
             android:icon="@drawable/ic_prenotazioni"/>
 
         <item
-            android:id="@+id/nav_locali_preferiti"
-            android:title="Locali Preferiti"
+            android:id="@+id/nav_preferiti"
+            android:title="Preferiti"
             android:icon="@drawable/ic_speciale"/>
 
         <item
@@ -33,4 +29,5 @@
             android:icon="@drawable/ic_impostazioni"/>
 
     </group>
+
 </menu>

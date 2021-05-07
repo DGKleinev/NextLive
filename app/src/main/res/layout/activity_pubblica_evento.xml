@@ -117,31 +117,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment" />
-
-            <TextView
-                android:id="@+id/textView12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="16sp"
-                android:textColor="@color/white"
-                android:fontFamily="@font/baloo"
-                android:text="Organizzatore:" />
-
-            <EditText
-                android:id="@+id/pubblica_currentUser"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="16sp"
-                android:layout_marginLeft="30dp"
-                android:textColorHint="@color/bottone_azzurro"
-                android:backgroundTint="@color/bottone_azzurro"
-                android:ems="10"
-                android:hint="Nome Organizzatore"
-                android:inputType="text" />
                 -->
-
             <TextView
                 android:id="@+id/textView14"
                 android:layout_width="wrap_content"

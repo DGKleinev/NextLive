@@ -15,9 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
 
 import com.example.nextlive.adapter.GenereMusicaleAdapter;
-import com.example.nextlive.model.CantanteModel;
 import com.example.nextlive.model.GenereMusicaleModel;
-import com.example.nextlive.model.UserModel;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -107,7 +105,7 @@ public class ModificaProfiloActivity extends AppCompatActivity implements View.O
                 break;
             case R.id.modificap_txtannulla:
                 Intent intent = new Intent(ModificaProfiloActivity.this, ProfileActivity.class);
-                intent.putExtra(MainActivity.USER_ID, getIntent().getStringExtra("utente_id"));
+                intent.putExtra(HomeActivity.USER_ID, getIntent().getStringExtra("utente_id"));
                 startActivity(intent);
                 break;
         }
@@ -121,7 +119,6 @@ public class ModificaProfiloActivity extends AppCompatActivity implements View.O
         user_numero = numero.getText().toString();
         user_website = numero.getText().toString();
         //database.child(id).push();
-        //UserModel nUser = new UserModel(nome, cognome, genere, username);
         //database.child("user").child(id).setValue(nUser);
         if (user_website.length() > 0) {
             if (!URLUtil.isValidUrl(user_website)) {

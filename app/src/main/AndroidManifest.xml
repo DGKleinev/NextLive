@@ -14,52 +14,47 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".ModificaProfiloActivity"></activity>
+        <activity android:name=".CandidaturaActivity"></activity>
+        <activity android:name=".SfondoActivity" />
+        <activity android:name=".PartecipaEventoActivity" />
+        <activity android:name=".ModificaProfiloActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/map_key" />
 
         <activity
-            android:name=".RegistrazioneActivity"
-            android:parentActivityName=".LoginActivity" />
-        <activity
             android:name=".NotificaActivity"
             android:parentActivityName=".SettingsActivity" />
         <activity
-            android:name=".RegistrazioneArtistaActivity"
+            android:name=".signup.RegistrazioneLocaleActivity"
             android:parentActivityName=".SelectUserActivity" />
         <activity
-            android:name=".RegistrazioneLocaleActivity"
-            android:parentActivityName=".SelectUserActivity" />
-        <activity
-            android:name=".RegistrazioneFanActivity"
+            android:name=".signup.RegistrazioneUserActivity"
             android:parentActivityName=".SelectUserActivity" />
         <activity
             android:name=".SelectUserActivity"
             android:parentActivityName=".LoginActivity" />
         <activity
             android:name=".LocaliViciniActivity"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".HomeActivity" />
         <activity
             android:name=".ProposteInviateActivity"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".HomeActivity" />
         <activity
             android:name=".LocaliPreferitiActivity"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".HomeActivity" />
         <activity
             android:name=".EventiActivity"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".HomeActivity" />
         <activity
             android:name=".PreferitiActivity"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".HomeActivity" />
         <activity android:name=".ChatActivity" />
         <activity
             android:name=".PubblicaEventoActivity"
-            android:parentActivityName=".MainActivity"
-            android:windowSoftInputMode="adjustPan">
-
-        </activity>
+            android:parentActivityName=".HomeActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ModificaPasswordActivity"
             android:parentActivityName=".SettingsActivity" />
@@ -71,10 +66,10 @@
             android:parentActivityName=".SettingsActivity" />
         <activity
             android:name=".SettingsActivity"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".HomeActivity" />
         <activity
             android:name=".ProfileActivity"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".HomeActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -82,9 +77,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".HomeActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

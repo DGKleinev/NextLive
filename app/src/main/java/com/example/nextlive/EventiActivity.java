@@ -9,9 +9,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import com.example.nextlive.adapter.ListViewAdapter;
+import com.example.nextlive.adapter.EventListViewAdapter;
 import com.example.nextlive.model.EventoModel;
-import com.example.nextlive.model.ListaItemModel;
 
 import java.util.ArrayList;
 
@@ -20,7 +19,7 @@ public class EventiActivity extends AppCompatActivity {
 
     private ListView listView;
     private ArrayList<EventoModel> eventList = new ArrayList<>();
-    private ListViewAdapter listViewAdapter;
+    private EventListViewAdapter eventListViewAdapter;
 
 
     @Override
@@ -41,8 +40,8 @@ public class EventiActivity extends AppCompatActivity {
         //listaItemModels.add(prova1);
         //listaItemModels.add(prova2);
 
-        listViewAdapter = new ListViewAdapter(EventiActivity.this, eventList);
-        listView.setAdapter(listViewAdapter);
+        eventListViewAdapter = new EventListViewAdapter(EventiActivity.this, eventList);
+        listView.setAdapter(eventListViewAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

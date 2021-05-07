@@ -43,6 +43,7 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 
     implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.android.gms:play-services-basement:17.5.0'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
@@ -69,6 +70,9 @@ dependencies {
     implementation 'com.google.android.libraries.places:places:2.2.0'
     //per superare 65k metodi
     implementation "androidx.multidex:multidex:2.0.1"
+    //per la serializzazione e deserializzazione (passare oggetti da una activity all'altra)
+    implementation 'com.google.code.gson:gson:2.8.4'
+
 }
 //Firebase
 apply plugin: 'com.google.gms.google-services'

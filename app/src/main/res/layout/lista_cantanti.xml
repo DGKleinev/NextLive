@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@drawable/sfondo_items">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/img_anteprima"
+            android:layout_width="137dp"
+            android:layout_height="144dp"
+            android:src="@mipmap/profile"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/titolo_cantante"
+            android:layout_width="272dp"
+            android:layout_height="46dp"
+            android:fontFamily="@font/baloo"
+            android:gravity="center"
+            android:text="Nome Cantante"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/img_anteprima"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/citta_cantante"
+            android:layout_width="272dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/baloo"
+            android:text="citta"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/img_anteprima"
+            app:layout_constraintTop_toBottomOf="@+id/titolo_cantante" />
+
+        <TextView
+            android:id="@+id/genere_musicale_cantante"
+            android:layout_width="272dp"
+            android:layout_height="31dp"
+            android:fontFamily="@font/baloo"
+            android:text="genere_musicale"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/img_anteprima"
+            app:layout_constraintTop_toBottomOf="@+id/citta_cantante" />
+
+        <TextView
+            android:id="@+id/valutazione_cantante"
+            android:layout_width="272dp"
+            android:layout_height="27dp"
+            android:fontFamily="@font/baloo"
+            android:text="valutazione"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/img_anteprima"
+            app:layout_constraintTop_toBottomOf="@+id/genere_musicale_cantante" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

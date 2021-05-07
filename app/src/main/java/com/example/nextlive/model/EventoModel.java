@@ -1,13 +1,16 @@
 package com.example.nextlive.model;
 
-import java.util.Date;
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
+import java.util.Objects;
 
 public class EventoModel {
     private String idAutore;
     private String titoloEvento;
     private String descrizioneEvento;
     private String indirizzoEvento;
-   // private Date dataEvento;
     private String dataEvento;
     private String nomeCantante;
     private String genereMusicale;
@@ -105,4 +108,18 @@ public class EventoModel {
         this.pImage = pImage;
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof EventoModel)) return false;
+        EventoModel that = (EventoModel) o;
+        return getIdAutore().equals(that.getIdAutore()) &&
+                getTitoloEvento().equals(that.getTitoloEvento()) &&
+                getDescrizioneEvento().equals(that.getDescrizioneEvento()) &&
+                getIndirizzoEvento().equals(that.getIndirizzoEvento()) &&
+                getDataEvento().equals(that.getDataEvento()) &&
+                getGenereMusicale().equals(that.getGenereMusicale()) &&
+                pImage.equals(that.pImage);
+    }
 }

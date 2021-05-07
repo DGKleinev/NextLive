@@ -15,10 +15,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
-
-import java.security.DomainCombiner;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 /*
@@ -61,7 +58,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()){
             case R.id.textButton_registrazione:
                 //il clickListener funziona, non funziona la chiamata alla activity
-                Intent intent = new Intent(LoginActivity.this, RegistrazioneActivity.class);
+                Intent intent = new Intent(LoginActivity.this, SelectUserActivity.class);
                 startActivity(intent);
                 break;
             case R.id.button_login:
@@ -85,12 +82,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                //questo non funziona
-                                //Toast.makeText(this,"prova",Toast.LENGTH_LONG).show();
                                 FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                intent.putExtra(MainActivity.USER_EMAIL, email);
-                                intent.putExtra(MainActivity.USER_ID, currentUser.getUid());
+                                Intent intent = new Intent(LoginActivity.this, SfondoActivity.class);
+                                intent.putExtra(SfondoActivity.USER_EMAIL, email);
+                                intent.putExtra(SfondoActivity.USER_ID, currentUser.getUid());
                                 startActivity(intent);
                             } else {
                                     Toast.makeText(getApplicationContext(), "Email non presente nel db", Toast.LENGTH_LONG).show();

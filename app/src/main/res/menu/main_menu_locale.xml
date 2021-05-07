@@ -9,22 +9,17 @@
             android:icon="@drawable/ic_home"/>
 
         <item
-            android:id="@+id/nav_pubblica"
+            android:id="@+id/nav_pubblica_eventi"
             android:title="@string/crea_evento"
             android:icon="@drawable/ic_crea_evento"/>
 
         <item
-            android:id="@+id/nav_proposte_inviate"
-            android:title="Proposte Inviate"
+            android:id="@+id/nav_eventi_creati"
+            android:title="Eventi Creati"
             android:icon="@drawable/ic_ingaggi"/>
 
         <item
-            android:id="@+id/nav_eventi"
-            android:title="Eventi"
-            android:icon="@drawable/ic_prenotazioni"/>
-
-        <item
-            android:id="@+id/nav_preferiti"
+            android:id="@+id/nav_cantanti_preferiti"
             android:title="Cantanti Preferiti"
             android:icon="@drawable/ic_speciale"/>
 

@@ -40,7 +40,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_width="380dp"
         android:layout_height="wrap_content"
-        tools:context=".RegistrazioneFanActivity"
+        tools:context=".signup.RegistrazioneUserActivity"
         android:orientation="vertical"
         android:layout_margin="15sp">
 
